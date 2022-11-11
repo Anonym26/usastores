@@ -3,7 +3,9 @@ from .models import Category, Product
 
 
 def product_list(request, category_slug=None):
-    """Возвращает список продуктов в наличии"""
+    """
+    Возвращает список продуктов в наличии
+    """
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
@@ -19,7 +21,9 @@ def product_list(request, category_slug=None):
 
 
 def product_detail(request, id, slug):
-    """Возвращает выбранный продукт"""
+    """
+    Возвращает выбранный продукт
+    """
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
     context = {
         'product': product
