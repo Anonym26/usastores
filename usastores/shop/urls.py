@@ -1,5 +1,5 @@
-from django.urls import re_path, path
-from . import views
+from django.urls import path
+
 from .views import *
 
 app_name = 'shop'
@@ -11,6 +11,6 @@ urlpatterns = [
          product_list,
          name='product_list_by_category'),
     path('<int:id>/<slug:slug>',
-         views.product_detail,
+         product_detail,
          name='product_detail'),
 ]
