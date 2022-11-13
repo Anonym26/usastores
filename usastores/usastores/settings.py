@@ -138,3 +138,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # ключ для хранения корзины в сессии пользователя
 CART_SESSION_ID = 'cart'
+
+# для записи отправленных электронных сообщений в консоль
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
