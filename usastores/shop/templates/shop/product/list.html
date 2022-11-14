@@ -26,14 +26,21 @@
                 <div class="row owl-carousel owl-theme" id="slider">    
                     {% for product in products %}
                     <div class="item">
-                        <div class="card" style="height: 450px;" >
-                            <div class="product-image" style="height: 250px;">
-                                <img src="{{ product.image.url }}" alt="Product image">
+                        <div class="product-card item">
+                            <div class="product-thumb">
+                                <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="Product image"></a>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title"> {{ product.name }} </h5>
-                                <span> {{ product.price }} </span>
-                                <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Больше информации</a>
+                            <div class="product-details">
+                                <h4><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
+                                <p>{{ product.description }}</p>
+                                <div class="product-bottom-details d-flex justify-content-between">
+                                    <div class="product-price">
+                                        {{ product.price }}
+                                    </div>
+                                    <div class="product-links">
+                                        <a href="#"><i class="bi bi-cart-fill"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
