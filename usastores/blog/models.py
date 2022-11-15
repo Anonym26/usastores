@@ -38,29 +38,30 @@ class Blog(models.Model):
         verbose_name_plural = 'Статьи'
         ordering = ['time_create', 'title']
 
-    class Category(models.Model):
+
+class Category(models.Model):
+    """
+    Класс Category.
+    """
+    name = models.CharField(max_length=100, db_index=True, verbose_name='Категория')
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+
+    def __str__(self):
         """
-        Класс Category.
+        Возвращает название категории.
         """
-        name = models.CharField(max_length=100, db_index=True, verbose_name='Категория')
-        slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+        return self.name
 
-        def __str__(self):
-            """
-            Возвращает название категории.
-            """
-            return self.name
+    class Meta:
+        """
+        Класс Meta класса Category.
+        """
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+        ordering = ['id']
 
-        class Meta:
-            """
-            Класс Meta класса Category.
-            """
-            verbose_name = 'Категория'
-            verbose_name_plural = 'Категории'
-            ordering = ['id']
-
-        def get_absolute_url(self):
-            """
-            Формирует ссылку по заданному шаблону category.
-            """
-            return reverse('category', kwargs={'cat_slug': self.slug})
+    def get_absolute_url(self):
+        """
+        Формирует ссылку по заданному шаблону category.
+        """
+        return reverse('category', kwargs={'cat_slug': self.slug})
