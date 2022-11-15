@@ -1,24 +1,39 @@
 {% extends "shop/base.html" %}
-
+{% load static%}
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
-    <h1>Checkout</h1>
-    <div class="order-info">
-        <h3>Your order</h3>
-        <ul>
-            {% for item in cart %}
-                <li>
-                    {{ item.quantity }}x {{ item.product.name }}
-                    <span>${{ item.total_price }}</span>
-                </li>
-            {% endfor %}
-        </ul>
-        <p>Total: ${{ cart.get_total_price }}</p>
+<link rel="stylesheet" href="{% static 'orders/css/style.css' %}">
+<div class="container-xxl">
+    <h1>Оформление заказа</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4 ">
+            <form action="." method="post" >
+                {% csrf_token %}
+                <table class="w-100">
+                    {{ form.as_table }}
+                </table>
+                <div class="d-grid gap-2">
+                    <input type="submit" class="btn btn-primary" value="ОФОРМИТЬ ЗАКАЗ">    
+                </div>
+            </form>
+        </div> 
+        
+        <div class="col-sm-8 d-flex justify-content-around">
+            <div class="order-info d-flex flex-column mb-3 justify-content-around">
+                <h3>Ваш заказ</h3>
+                <ul>
+                    {% for item in cart %}
+                        <li class="d-flex justify-content-between">
+                            {{ item.quantity }}x {{ item.product.name }}
+                            <span>{{ item.total_price }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p>Итого: {{ cart.get_total_price }} рублей</p>
+            </div> 
+        </div>
     </div>
-    <form action="." method="post" class="order-form">
-        {{ form.as_p }}
-        <p><input type="submit" value="Place order"></p>
-        {% csrf_token %}
-    </form>
+</div>
 {% endblock %}
