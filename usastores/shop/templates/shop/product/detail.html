@@ -1,19 +1,40 @@
-{% extends "shop/base.html" %}
-{% load static %}
-{% block title %}
-    {% if category %}{{ category.title }}{% else %}Products{% endif %}
-{% endblock %}
+{% extends "shop/base.html" %} 
+{% load static %} 
+{% block title %} 
+  Product 
+{% endblock %} 
+
 {% block content %}
-    <div class="product-detail">
-        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-        <h1>{{ product.name }}</h1>
-        <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-        <p class="price">${{ product.price }}</p>
-        <form action="{% url 'cart:cart_add' product.id %}" method="post">
-            {{ cart_product_form }}
-            {% csrf_token %}
-            <input type="submit" value="Add to cart">
-        </form>
-        {{ product.description|linebreaks }}
+<link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+<section>
+  <div class="container-xxl">
+    <div class="card mb-12">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="{{ product.image.url }}"
+            class="img-fluid rounded-start"
+            alt="Product image"
+          />
+        </div>
+        <div class="col-md-8 d-flex flex-column mb-4 justify-content-around">
+          <div class="product-detail-title p-2">
+            <h4>{{ product.name }}</h4>
+          </div>
+          <div class="product-detail-discription p-2">
+            {{ product.description }}
+          </div>
+          <div class="product-detail-price p-2">{{ product.price }}</div>
+          <div class="product-detail-cart p-2">
+            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+              {{ cart_product_form }} {% csrf_token %}
+              <input type="submit" class="btn btn-primary" value="В корзину" />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
 {% endblock %}

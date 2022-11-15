@@ -1,54 +1,65 @@
 {% extends "shop/base.html" %}
 {% load static %}
+    
 {% block title %}
     Your shopping cart
 {% endblock %}
 {% block content %}
-    <h1>Your shopping cart</h1>
-    <table class="cart">
-        <thead>
-        <tr>
-            <th>Image</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Remove</th>
-            <th>Unit price</th>
-            <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in cart %}
-            {% with product=item.product %}
-                <tr>
-                    <td>
-                        <a href="{{ product.get_absolute_url }}">
-                            <img src="
-                                {% if product.image %}
-                                    {{ product.image.url }}
-                                {% else %}
-                                    {% static "img/no_image.png" %}
-                                {% endif %}">
-                        </a>
-                    </td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td><a href="{% url "cart:cart_remove" product.id%}">Remove</a></td>
-                    <td class="num">${{ item.price }}</td>
-                    <td class="num">${{ item.total_price }}</td>
-                </tr>
-            {% endwith %}
-        {% endfor %}
-        <tr class="total">
-            <td>Total</td>
-            <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <p class="text-right">
-        <a href="{% url "shop:product_list" %}" class="button light">Continue shopping</a>
-        <a href="{% url "orders:order_create" %}" class="button">
-        Checkout
-        </a>
-    </p>
+<link rel="stylesheet" href="{% static 'cart/css/style.css' %}">
+    
+    <div class="container-xxl">
+        <h1>Ваши покупки</h1>
+        <table class="cart">
+            <thead class="cart-title">
+            <tr>
+                <th id="image">Фото</th>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Удалить</th>
+                <th>Цена товара</th>
+                <th>Общая цена</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <tr>
+                        <td class="product-thumb">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="
+                                    {% if product.image %}
+                                        {{ product.image.url }}
+                                    {% else %}
+                                        {% static 'img/no_image.png' %}
+                                    {% endif %}" class="img-fluid rounded-start">
+                            </a>
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td><a href="{% url 'cart:cart_remove' product.id%}">Удалить</a></td>
+                        <td class="num">{{ item.price }}</td>
+                        <td class="num">{{ item.total_price }}</td>
+                    </tr> 
+                {% endwith %}
+            {% endfor %}
+                  
+            <tr class="total">
+                <td>Итого</td>
+                <td colspan="4"></td>
+                <td class="num">{{ cart.get_total_price }}</td>
+            </tr>
+            
+            </tbody>
+        </table>
+        <div class="container">
+            <div class="row justify-content-between">
+              <div class="col-10">
+                <a href="{% url 'shop:product_list' %}" class="btn btn-outline-primary">ПРОДОЛЖИТЬ ПОКУПКИ</a>
+              </div>
+              <div class="col-2">
+                <a href="{% url 'orders:order_create' %}" class="btn btn-outline-primary">ОФОРМИТЬ ЗАКАЗ</a>
+              </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

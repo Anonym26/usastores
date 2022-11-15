@@ -12,7 +12,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 250px;
+	height: 300px;
 	padding: 20px;
 }
 
@@ -70,3 +70,36 @@
 /* Product card */
 
 
+/* Product detatil */
+.product-detail-price {
+    font-size: 30px;
+	color: #000000;
+	font-weight: 600;
+    padding: 30px 15px;
+}
+
+.product-detail-discription {
+    padding: 30px 15px;
+    font-size: 15px; 
+}
+
+.product-detail-title {
+    padding: 30px 15px;
+    font-size: 20px; 
+}
+
+.product-detail-cart {
+    padding: 30px 15px;
+    font-size: 20px; 
+} 
+/* Product detatil */
+
+/* Card */
+@media (max-device-width: 768px){
+	.mob-fix {
+	height: auto !important;
+	line-height: 20px !important;
+	text-align: center;
+	}
+	}
+/* Card */
