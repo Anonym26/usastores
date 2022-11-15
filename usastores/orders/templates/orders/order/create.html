@@ -14,9 +14,11 @@
                 <table class="w-100">
                     {{ form.as_table }}
                 </table>
+                {% if cart|length > 0 %}
                 <div class="d-grid gap-2">
                     <input type="submit" class="btn btn-primary" value="ОФОРМИТЬ ЗАКАЗ">    
                 </div>
+                {%  endif %}
             </form>
         </div> 
         
