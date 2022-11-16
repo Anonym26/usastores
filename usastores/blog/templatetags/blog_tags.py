@@ -5,12 +5,6 @@ from blog.models import *
 register = template.Library()
 
 
-# простой пользовательский тег
-@register.simple_tag()
-def get_categories():
-    return Category.objects.all()
-
-
 # включающий тег
 @register.inclusion_tag('blog/list_categories.html')
 def show_categories(sort=None, cat_selected=0):
@@ -20,5 +14,11 @@ def show_categories(sort=None, cat_selected=0):
         cats = Category.objects.order_by(sort)
     return {'cats': cats, 'cat_selected': cat_selected}
 
+
+@register.inclusion_tag('blog/list_last_post.html')
+def show_last_posts():
+    """Возвращает 3 последних поста."""
+    posts = Blog.objects.order_by('-id')[:3]
+    return {'posts': posts}
 
 

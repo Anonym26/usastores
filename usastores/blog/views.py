@@ -21,6 +21,7 @@ class BlogHome(ListView):
         return Blog.objects.filter(is_published=True)
 
 
+
 # создаем класс DetailView для отображения поста
 class ShowPost(DetailView):
     model = Blog

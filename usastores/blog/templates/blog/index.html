@@ -1,5 +1,6 @@
 {% extends "blog/blog_base.html" %}
 {% load static %}
+
 {% block content_blog %}
  <div class="container-xxl">
 	<ul class="list-articles">
@@ -7,7 +8,7 @@
 			<li>
 				<div class="article-panel">
 					<p class="first">Категория: {{p.cat}}</p>
-					<p class="last">Дата: {{p.time_update|date:"d-m-Y H:i:s"}}</p>
+					<p class="last">Дата: {{p.time_update|date:"d-m-Y"}}</p>
 				</div>
 
 				{% if p.photo %}
