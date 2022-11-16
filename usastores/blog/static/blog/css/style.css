@@ -93,3 +93,16 @@ ul.list-articles {
 	font-size: 20px;
 	font-family: Yandex Sans Display Light;
 }
+
+
+
+
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.card {
+    display: inline-block;
+  }
