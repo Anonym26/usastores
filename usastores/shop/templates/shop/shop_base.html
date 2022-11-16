@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- CSS only -->
+    <link rel="stylesheet" href="{% static 'shop/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/owl.theme.default.min.css' %}">
+
+    <!-- Custom -->
+    <script src="{% static 'shop/js/owl.carousel.min.js' %}"> </script>
+
+    <div id="content">
+        {% block product_list %}
+        {% endblock %}
+    </div>
+
+{% endblock %}

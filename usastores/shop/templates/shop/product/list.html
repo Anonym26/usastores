@@ -1,10 +1,11 @@
-{% extends "shop/base.html" %}
+{% extends "shop/shop_base.html" %}
 {% load static %}
 {% block title %}
-    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+   USA STORES
 {% endblock %}
 
-{% block content %}
+{% block product_list %}
+
     <section>
         <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
         <div class="container-xxl">
