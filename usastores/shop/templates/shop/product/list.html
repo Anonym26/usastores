@@ -1,87 +1,88 @@
-{% extends "shop/shop_base.html" %}
-{% load static %}
-{% load blog_tags %}
-
-{% block title %}
-   USA STORES
-{% endblock %}
-
+{% extends "shop/shop_base.html" %} 
+{% load static %} 
+{% load blog_tags %} 
+{%block title %} USA STORES {% endblock %} 
 {% block product_list %}
-
-
-    <section>
-        <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
-        <div class="container-xxl">
-            <div class="row align-items-center">
-                <div class="col-8">
-                    <h1>Добро пожаловать в магазин USA STORES</h1>
-                </div>
-                <div class="col-4">
-                    <img class="w-100" src="{% static 'shop/images/logo.png' %}" alt="Logo">
-                </div>
+    <!-- Logo -->
+    <link rel="stylesheet" href="{% static 'shop/css/style.css' %}" />
+    <div class="container-xxl">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-10 col-sm-10 col-lg-8  text-center">
+            <h1>Добро пожаловать в магазин</h1>
+            <h1>USA STORES</h1>
+            <h5>ВЫКУП | ДОСТАВКА ТОВАРОВ ИЗ ЕВРОПЫ И США</h5>
             </div>
-        </div>
-    </section>
-
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Товары в наличии</h3>
-                <hr>
-                <div class="row owl-carousel owl-theme" id="slider">    
-                    {% for product in products %}
-                    <div class="item">
-                        <div class="product-card item">
-                            <div class="product-thumb">
-                                <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="Product image"></a>
-                            </div>
-                            <div class="product-details">
-                                <h4><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
-                                <p>{{ product.description }}</p>
-                                <div class="product-bottom-details d-flex justify-content-between">
-                                    <div class="product-price">
-                                        {{ product.price }}
-                                    </div>
-                                    <div class="product-links">
-                                        <a href="#"><i class="bi bi-cart-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div> 
+            <div class="col-8 col-sm-8 col-lg-4 ">
+            <img
+                class="w-100"
+                src="{% static 'shop/images/logo.png' %}"
+                alt="Logo"
+            />
+            </div>
         </div>
     </div>
 
+
+    <!-- Products -->
+    <div class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+        <h3>Товары в наличии</h3>
+        <hr />
+        <div class="row owl-carousel owl-theme" id="slider">
+            {% for product in products %}
+            <div class="product-card item">
+                <div class="product-thumb">
+                <a href="{{ product.get_absolute_url }}"
+                    ><img src="{{ product.image.url }}" alt="Product image"
+                /></a>
+                </div>
+                <div class="product-details">
+                <h4>
+                    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                </h4>
+                <p>{{ product.description }}</p>
+                <div
+                    class="product-bottom-details d-flex justify-content-between"
+                >
+                    <div class="product-price">{{ product.price }}</div>
+                    <div class="product-links">
+                    <a href="#"><i class="bi bi-cart-fill"></i></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+    </div>
+
     {% block scripts %}
-        <script>
-            $(document).ready(function(){
-                const slider = $("#slider").owlCarousel({
-                    loop:true,
-                    margin:10,
-                    nav:true,
-                    responsive:{
-                        0:{
-                            items:1
-                        },
-                        600:{
-                            items:2
-                        },
-                        1000:{
-                            items:4
-                        }
-                    }
-                });
-            });
-        </script>
+    <script>
+    $(document).ready(function () {
+        const slider = $("#slider").owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+            items: 1,
+            },
+            576: {
+            items: 2,
+            },
+            992: {
+            items: 4,
+            },
+        },
+        });
+    });
+    </script>
     {% endblock scripts %}
 
     <!-- Раздел "Блог" -->
-                {% show_last_posts %}
-    <!-- Конец раздела "Блог" -->
+    
+    {% show_last_posts %} 
 
-{% endblock %}
-
-
+{% endblock product_list %}

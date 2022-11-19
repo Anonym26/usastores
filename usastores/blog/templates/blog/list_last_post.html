@@ -1,36 +1,43 @@
 {% load static %}
 <!-- Раздел "Блог" -->
-<div class="container-xxl">
-  <div class="row">
-        <h3>Блог</h3>
-        <hr />
-        <div class="container text-center">
-            <div class="row">
-                {% for post in posts%}
-                <div class="col">
-                    <div class="card" style="height: 100%;">
-                        <a href="{{ post.get_absolute_url }}" style="height: 300px;">
-                            <img src="{{ post.photo.url }}" class="card-img-top" alt="Post image" style="height: 100%;">
-                        </a>
-                        
-                        <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}" />
+<div class="container">
+    <div class="row">
+            <h3>Блог</h3>
+            <hr />
+            <div class="container">
+                <div class="row">
+                    {% for post in posts%}
+                    <div class="post-card col-12 col-sm-6 col-lg-3">
+                        <div class="post-thumb">
+                            <a href="{{ post.get_absolute_url }}">
+                                <img src="{{ post.photo.url }}" alt="Post image">
+                            </a>
+                            <div class="post-title">
+                                <h4>
+                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                </h4>
+                           
+                            </div>
                         </div>
                     </div>
-                </div>
-                {% endfor %}
-                <div class="col">
-                    <div class="card text-center" style="height: 100%;  ">
-                        <a href="{% url 'home' %}" style="height: 300px;" class="d-flex justify-content-center align-items-center">
-                            <img src="media/arrow-right-circle.svg" class="card-img-top" alt="Post image" style="height: 150px; width: 150px;">
-                        </a>  
-                        <div class="card-body">
-                        <h5 class="card-title">Все статьи</h5>
+                    {% endfor %}
+                    <div class="post-card col-12 col-sm-6 col-lg-3">
+                        <div class="post-thumb">
+                            <a href="{% url 'home' %}">
+                                <img src="media/arrow-right-circle.svg" alt="Post image" id="all-posts-img">
+                            </a>  
+                            <div class="post-title">
+                                <h4>
+                                    <a href="{{ post.get_absolute_url }}">Все статьи</a>
+                                </h4>
+                              
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 </div>
 <!-- Конец раздела "Блог" -->

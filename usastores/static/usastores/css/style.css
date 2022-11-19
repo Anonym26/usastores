@@ -1,0 +1,65 @@
+html, body {
+    height: 100%;
+} 
+
+body .container {
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header Secstion */
+.header {
+	width: 100%;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.cart-status {
+	margin-right: 10px;
+}
+
+/* Main Secstion */
+.main {
+	width: 100%;
+}
+
+/* Footer Secstion*/
+.footer {
+	width: 100%;
+    padding-top: 20px;
+	background-color: rgb(246, 247, 248);
+    margin-top: 50px;
+}
+
+.footer h4 {
+	color: rgb(122, 121, 121);
+	text-transform: uppercase;
+	font-size: 16px;
+	border-bottom: 1px solid #666;
+	padding-bottom: 3px;
+}
+
+.footer a {
+	text-decoration: none;
+	transition: all .3s;
+}
+
+.footer a:hover {
+	color: rgb(0, 0, 0);
+	text-decoration: underline;
+}
+
+.footer a, .footer li {
+	color: #969696;
+}
+
+.footer li a {
+	display: block;
+    margin-bottom: 5px;
+}
+
+

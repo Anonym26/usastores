@@ -18,7 +18,7 @@ def show_categories(sort=None, cat_selected=0):
 @register.inclusion_tag('blog/list_last_post.html')
 def show_last_posts():
     """Возвращает 3 последних поста."""
-    posts = Blog.objects.order_by('-id')[:3]
+    posts = Blog.objects.filter(is_published=True).order_by('-id')[:3]
     return {'posts': posts}
 
 
