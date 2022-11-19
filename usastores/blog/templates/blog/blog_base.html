@@ -2,37 +2,29 @@
 {% load static %}
 {% load blog_tags %}
 {% block title %}
-	Блог
+	Блог USA STORES
 {% endblock %}
 {% block content %}
+	<!-- CSS -->
 	<link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
 
-<div class="container-xxl">	
-		<table class="table-content" border=0 cellpadding="0" cellspacing="0">
-			<tr>
-			<!-- Sidebar слева -->
-				<td valign="top" class="left-chapters">
-					<ul id="leftchapters">
-						{% if cat_selected == 0 %}
-						<li class="selected">Все категории</li>
-						{% else %}
-						<li><a href="{% url 'home' %}">Все категории</a></li>
-						{% endif %}
-			
-						{% show_categories cat_selected=cat_selected %}
-					</ul>
-				</td>
-			<!-- Конец Sidebar'а -->
-				<td valign="top" class="content">
-				
-			<!-- Блок контента -->
-					<div class="content-text">
-						{% block content_blog %}
-						{% endblock %}
+	<div class="container">	
+		<!-- Блок категорий -->
+		<div class="row categories">
+				{% if cat_selected == 0 %}
+					<div class="col selected">Все категории</div>
+				{% else %}
+					<div class="col">
+						<a href="{% url 'home' %}">Все категории</a>
 					</div>
-			<!-- Конец блока контента -->
-				</td>
-			</tr>
-		</table>
+				{% endif %}
+
+				{% show_categories cat_selected=cat_selected %}
+		</div>
+		<hr>
+		<!-- Блок контента -->
+		 <div class="row">
+			
+		 </div>
 	</div>
 {% endblock %}

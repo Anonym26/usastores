@@ -1,7 +1,7 @@
 {% for c in cats %}
 	{% if c.pk == cat_selected %}
-		<li class="selected">{{c.name}}</li>
+		<div class="col selected">{{c.name}}</div>
 	{% else %}
-		<li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
+		<div class="col"><a href="{{ c.get_absolute_url }}">{{c.name}}</a></div>
 	{% endif %}
 {% endfor %}
