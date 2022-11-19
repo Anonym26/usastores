@@ -1,8 +1,26 @@
 {% extends 'blog/blog_base.html' %}
 {% block content_blog %}
-  <h1>{{post.title}}</h1>
-  {% if post.photo %}
-    <p><img class="img-article-left" src="{{post.photo.url}}"></p>
-  {% endif %}
-  {{post.content|linebreaks}}
+  <!-- Post detail -->
+  <div>
+    <h6>
+      <a href="/">Главная</a>/
+      <a href="{% url 'home' %}">Блог</a>/ 
+      {{post.cat}}
+    </h6>
+    <hr>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-4 post-detail">
+        <img src="{{post.photo.url}}">
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+        <h2>{{post.title}}</h2>
+        <p>
+          {{post.content|linebreaks}}
+        </p>
+    </div>
+    </div>
+</div>
 {% endblock %}

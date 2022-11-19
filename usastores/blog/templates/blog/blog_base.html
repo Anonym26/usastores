@@ -12,10 +12,10 @@
 		<!-- Блок категорий -->
 		<div class="row categories">
 				{% if cat_selected == 0 %}
-					<div class="col selected">Все категории</div>
+					<div class="col selected"><nobr>Все категории</nobr></div>
 				{% else %}
 					<div class="col">
-						<a href="{% url 'home' %}">Все категории</a>
+						<a href="{% url 'home' %}"><nobr>Все категории</nobr></a>
 					</div>
 				{% endif %}
 
@@ -24,7 +24,8 @@
 		<hr>
 		<!-- Блок контента -->
 		 <div class="row">
-			
+			{% block content_blog %}
+			{% endblock content_blog %}
 		 </div>
 	</div>
 {% endblock %}

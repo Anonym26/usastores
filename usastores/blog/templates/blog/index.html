@@ -2,27 +2,33 @@
 {% load static %}
 
 {% block content_blog %}
- <div class="container-xxl">
-	<ul class="list-articles">
-		{% for p in posts %}
-			<li>
-				<div class="article-panel">
-					<p class="first">Категория: {{p.cat}}</p>
-					<p class="last">Дата: {{p.time_update|date:"d-m-Y"}}</p>
-				</div>
-
-				{% if p.photo %}
-					<p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
-				{% endif %}
-
+<h1>Блог</h1>
+<hr>
+ <div class="container">
+	{% for p in posts %}
+		<div class="row article-panel">
+			<div class="col">{{p.cat}}</div>
+			<div class="col data">
+				<nobr>{{p.time_update|date:"d-m-Y"}}</nobr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-4 col-md-4 article-left">
+				<img src="{{p.photo.url}}">
+			</div>
+			<div class="col-12 col-sm-12 col-md-12 col-lg-8 article-right">
 				<h2>{{p.title}}</h2>
+				<p>
 				{% autoescape on %}
-					{{p.content|linebreaks|truncatewords:50}}
+					{{p.content|linebreaks|truncatewords:40}}
 				{% endautoescape %}
-					<div class="clear"></div>
-					<p class="link-read-post"><a href="{{ p.get_absolute_url }}">Читать пост</a></p>
-			</li>
-		{% endfor %}
-	</ul>
+				</p>
+				<a href="{{ p.get_absolute_url }}">Читать ></a>
+			</div>
+		</div>
+		<hr>
+	{% endfor %}
+
+
  </div>
-{% endblock %}
+{% endblock content_blog %}
