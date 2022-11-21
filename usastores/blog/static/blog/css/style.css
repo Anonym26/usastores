@@ -94,6 +94,12 @@ div.article-panel {
 }
 
 #all-posts-img {
-	height: 150px; 
+	height: 150px; 	
 	width: 150px;
+}
+
+/* Paginator */
+.example1-pagination {
+	margin-top: 100px;
+	text-align: center;
 }

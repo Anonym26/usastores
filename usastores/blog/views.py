@@ -1,6 +1,5 @@
-from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView
+
 from blog.models import *
 
 
@@ -8,6 +7,7 @@ class BlogHome(ListView):
     model = Blog  # ссылается на модель Blog
     template_name = 'blog/index.html'  # прописываем путь
     context_object_name = 'posts'  # для использования в шаблоне
+    paginate_by = 2  # пагинация
 
     def get_context_data(self, *, object_list=None, **kwargs):
         """Формирует динамический и статический контекст, который передается в шаблон"""

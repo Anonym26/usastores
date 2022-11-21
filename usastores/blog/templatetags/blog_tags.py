@@ -4,7 +4,7 @@ from blog.models import *
 register = template.Library()
 
 
-# включающий тег
+# включающие теги
 @register.inclusion_tag('blog/list_categories.html')
 def show_categories(sort=None, cat_selected=0):
     """
