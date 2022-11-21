@@ -19,6 +19,7 @@
 .product-thumb img {
 	width: auto;
 	height: auto;
+	max-width: 300px;
 }
 
 .product-details {
@@ -92,14 +93,3 @@
     padding: 30px 15px;
     font-size: 20px; 
 } 
-/* Product detatil */
-
-/* Card */
-@media (max-device-width: 768px){
-	.mob-fix {
-	height: auto !important;
-	line-height: 20px !important;
-	text-align: center;
-	}
-	}
-
