@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'blog.apps.BlogConfig',
+    'accounts.apps.AccountsConfig',
+
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -150,6 +153,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
 
 # авторизация пользователей
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
-LOGOUT_REDIRECT_URL = 'home'
+# стилизация авторизации
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView
 
 from blog.models import *
 from blog.utils import DataMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class BlogHome(DataMixin, ListView):
@@ -24,7 +25,7 @@ class BlogHome(DataMixin, ListView):
 
 
 # создаем класс DetailView для отображения поста
-class ShowPost(DetailView):
+class ShowPost(LoginRequiredMixin, DetailView):
     model = Blog
     template_name = 'blog/post.html'
     slug_url_kwarg = 'post_slug'

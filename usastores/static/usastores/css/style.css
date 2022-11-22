@@ -19,7 +19,11 @@ body .container {
 }
 
 .cart-status {
-	margin-right: 10px;
+	margin-right: 15px;
+}
+
+.login a {
+	text-decoration: none;
 }
 
 /* Main Secstion */
