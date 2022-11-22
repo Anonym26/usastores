@@ -9,7 +9,6 @@ class BlogHome(DataMixin, ListView):
     template_name = 'blog/index.html'  # прописываем путь
     context_object_name = 'posts'  # для использования в шаблоне
 
-
     def get_context_data(self, *, object_list=None, **kwargs):
         """Формирует динамический и статический контекст, который передается в шаблон"""
         context = super().get_context_data(**kwargs)  # обращаемся к базовому классу и берем существующий контекст

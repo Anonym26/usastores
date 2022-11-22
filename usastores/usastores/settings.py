@@ -148,3 +148,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # ключ для хранения корзины в сессии пользователя
 CART_SESSION_ID = 'cart'
+
+# авторизация пользователей
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'home'
