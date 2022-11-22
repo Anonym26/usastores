@@ -1,13 +1,14 @@
 from django.views.generic import ListView, DetailView
 
 from blog.models import *
+from blog.utils import DataMixin
 
 
-class BlogHome(ListView):
+class BlogHome(DataMixin, ListView):
     model = Blog  # ссылается на модель Blog
     template_name = 'blog/index.html'  # прописываем путь
     context_object_name = 'posts'  # для использования в шаблоне
-    paginate_by = 2  # пагинация
+
 
     def get_context_data(self, *, object_list=None, **kwargs):
         """Формирует динамический и статический контекст, который передается в шаблон"""
@@ -17,9 +18,10 @@ class BlogHome(ListView):
         return context
 
     def get_queryset(self):
-        """Возвращает только те записи у которых указанное поле = True"""
+        """
+        Возвращает опубликованные записи.
+        """
         return Blog.objects.filter(is_published=True)
-
 
 
 # создаем класс DetailView для отображения поста
@@ -37,7 +39,7 @@ class ShowPost(DetailView):
         return context
 
 
-class BlogCategory(ListView):
+class BlogCategory(DataMixin, ListView):
     model = Blog
     template_name = 'blog/index.html'
     context_object_name = 'posts'
