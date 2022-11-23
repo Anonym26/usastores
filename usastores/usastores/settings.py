@@ -28,6 +28,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# авторизация пользователей
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+PASSWORD_RESET_CONFIRM = '/'
+
+# письма будут отправлены в консоль
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
@@ -43,9 +51,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'blog.apps.BlogConfig',
-    'accounts.apps.AccountsConfig',
-
-    'crispy_forms',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -152,9 +158,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # ключ для хранения корзины в сессии пользователя
 CART_SESSION_ID = 'cart'
 
-# авторизация пользователей
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
-# стилизация авторизации
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

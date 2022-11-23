@@ -66,4 +66,8 @@ body .container {
     margin-bottom: 5px;
 }
 
-
+.reset-pas {
+display: flex;
+justify-content: space-evenly !important;
+background-color: black;
+}

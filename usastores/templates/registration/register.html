@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Регистрация {% endblock %}
+
+{% block content %}
+        <link type="text/css" rel="stylesheet" href="{% static 'usastores/css/login.css' %}">
+        <h1>Регистрация</h1>
+        <hr>
+        <div class="container-xxl register">
+            <form action="{% url 'register' %}" method="post">
+                {{ form }}
+                {% csrf_token %}
+                <div class="button">
+                    <button type="submit" class="btn btn-secondary">Зарегистрироваться</button>
+                </div>    
+            </form>
+        </div>
+    
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Авторизация {% endblock %}
+
+{% block content %}
+
+    <link type="text/css" rel="stylesheet" href="{% static 'usastores/css/login.css' %}">
+    <h1>Авторизация</h1>
+    <hr>
+    <div class="container-xxl log-in">
+        {% if form.errors %}
+            <p>{{ form.errors.error }}</p>
+        {% endif %}
+            <form action="{% url 'login' %}" method="post">
+                {{ form }}
+                {% csrf_token %}
+                <div class="button">
+                    <button type="submit" class="btn btn-secondary">Войти</button>
+                    <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+                </div>
+            </form>
+    </div>
+
+{% endblock %}
