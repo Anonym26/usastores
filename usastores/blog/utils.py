@@ -6,4 +6,4 @@ class DataMixin:
     Класс DataMixin.
     Убирает дублирование кода.
     """
-    paginate_by = 2
+    paginate_by = 3

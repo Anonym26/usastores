@@ -52,3 +52,4 @@ class BlogCategory(DataMixin, ListView):
         context['title'] = 'Категория - ' + str(context['posts'][0].cat)
         context['cat_selected'] = context['posts'][0].cat_id
         return context
+
