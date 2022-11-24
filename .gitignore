@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 
-
+# yandex
+yandex.py
 
 __pycache__/
 /__pycache__/
