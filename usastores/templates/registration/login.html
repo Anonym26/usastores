@@ -13,6 +13,7 @@
             <p>{{ form.errors.error }}</p>
         {% endif %}
             <form action="{% url 'login' %}" method="post">
+                <input type="hidden" name="next" value="{{next}}" />
                 {{ form }}
                 {% csrf_token %}
                 <div class="button">

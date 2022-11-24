@@ -15,10 +15,12 @@ class OrderAdmin(admin.ModelAdmin):
     """
     Класс OrderAdmin.
     """
-    list_display = ['id', 'first_name', 'last_name', 'email',
+    list_display = ['id', 'customer', 'first_name', 'last_name', 'email', 'phone_number',
                     'address', 'postal_code', 'city', 'paid',
-                    'created', 'updated']
+                    'created', 'updated', 'status']
     list_filter = ['paid', 'created', 'updated']
+    list_editable = ['email', 'phone_number',
+                     'address', 'status']
     inlines = [OrderItemInline]
 
 

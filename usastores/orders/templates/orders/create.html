@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static%}
-{% block title %}Оформление заказа{% endblock %}
+
+{% block title %} Оформление заказа {% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'orders/css/style.css' %}">
@@ -16,9 +17,16 @@
                 </table>
                 {% if cart|length > 0 %}
                 <div class="d-grid gap-2 justify-content-center button">
-                    <input type="submit" class="btn btn-primary" value="ОФОРМИТЬ ЗАКАЗ">    
+                    {% if request.user.is_anonymous %}
+                        <div>
+                            <a href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">Войти</a> |
+                            <a href="{% url 'register' %}">Зарегистрироваться</a>
+                        </div>
+                    {% else %}
+                        <input type="submit" class="btn btn-primary" value="ОФОРМИТЬ ЗАКАЗ">
+                    {% endif %}
                 </div>
-                {%  endif %}
+                {% endif %}
             </form>
         </div> 
         
@@ -29,11 +37,11 @@
                     {% for item in cart %}
                         <li class="d-flex justify-content-between">
                             {{ item.quantity }}x {{ item.product.name }}
-                            <span>{{ item.total_price }}</span>
+                            <span>{{ item.total_price|floatformat:"g" }} ₽</span>
                         </li>
                     {% endfor %}
                 </ul>
-                <p>Итого: {{ cart.get_total_price }} рублей</p>
+                <p>Итого: {{ cart.get_total_price|floatformat:"g" }} ₽</p>
             </div> 
         </div>
     </div>

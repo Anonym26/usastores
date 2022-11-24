@@ -24,7 +24,7 @@
           <div class="product-detail-discription p-2">
             {{ product.description }}
           </div>
-          <div class="product-detail-price p-2">{{ product.price }}</div>
+          <div class="product-detail-price p-2">{{ product.price|floatformat:"g" }} ₽</div>
           <div class="product-detail-cart p-2">
             <form action="{% url 'cart:cart_add' product.id %}" method="post">
               {{ cart_product_form }} {% csrf_token %}

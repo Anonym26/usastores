@@ -31,13 +31,13 @@
                             <div class="col-12 col-sm content">{{ product.name }}</div>
                             <div class="col-6 col-sm content">{{ item.quantity }}</div>
                             <div class="col-6 col-sm content"><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></div>                      
-                            <div class="col-6 col-sm content">{{ item.price }}</div>
-                            <div class="col-6 col-sm content">{{ item.total_price }}</div>
+                            <div class="col-6 col-sm content">{{ item.price|floatformat:"g" }} ₽</div>
+                            <div class="col-6 col-sm content">{{ item.total_price|floatformat:"g" }} ₽</div>
                         {% endwith %}
                     </div>
                 {% endfor %}
             {% else %} 
-                <div class="row cart-empty"><h5>Ваша корзина пуста</h5></div>
+                <div class="row cart-empty"><h5>Ваша корзина пуста.</h5></div>
             {% endif %}  
         </div>
         <div class="row total">

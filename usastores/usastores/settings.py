@@ -14,6 +14,8 @@ from pathlib import Path
 import os.path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from yandex import TOKEN
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -35,7 +37,7 @@ LOGOUT_REDIRECT_URL = '/'
 PASSWORD_RESET_CONFIRM = '/'
 
 # письма будут отправлены в консоль
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
@@ -155,8 +157,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-# ключ для хранения корзины в сессии пользователя
+# Ключ для хранения корзины в сессии пользователя
 CART_SESSION_ID = 'cart'
 
+# Настройка почты
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "romanfilkov26@gmail.com"
+EMAIL_HOST_PASSWORD = TOKEN
+EMAIL_USE_TLS = True
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 

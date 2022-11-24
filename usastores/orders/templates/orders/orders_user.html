@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Ваши заказы {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'orders/css/style.css' %}">
+
+<h1>Ваши заказы</h1>
+<hr>
+<div class="container-xxl">
+    <div class="container-xxl">
+        <div class="row order-article d-none d-sm-flex">
+            <div class="col-1">№</div>
+            <div class="col">Товар</div>
+            <div class="col-1">К-во</div>
+            <div class="col">Сумма</div>
+            <div class="col">Статус</div>
+        </div>
+        {% if orders|length > 0 %}
+            {% for order in orders %}
+                <div class="row order-content">
+                    <div class="col-12 col-sm-1 order-number"># {{ order.id }}</div>
+                    <div class="col">
+                        {% for item in orders_item %}
+                            <div class="row order-product">
+                                {% if order == item.order %}
+                                    <div class="col-12 col-sm order-product">{{ item.product }}</div>
+                                    <div class="col-6 col-sm-1 order-quantity">{{ item.quantity }} шт.</div>
+                                    <div class="col-6 col-sm order-price">{{ item.get_cost|floatformat:"g" }} ₽</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-12 col-sm-3 order-number"> {{ order.status }}</div>
+                </div>
+                <hr>
+            {% endfor %}
+        {% else %} 
+            <div class="row order-empty"><h5>У вас еще нет заказов.</h5></div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

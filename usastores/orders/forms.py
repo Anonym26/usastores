@@ -5,7 +5,7 @@ from .models import Order
 class OrderCreateForm(forms.ModelForm):
     """
     Класс OrderCreateForm.
-    Форма для создания новых объектов Orderw.
+    Форма для создания новых объектов Orders.
     """
 
     class Meta:
@@ -13,4 +13,4 @@ class OrderCreateForm(forms.ModelForm):
         Класс Meta класса OrderCreateForm.
         """
         model = Order
-        fields = ['first_name', 'last_name', 'email', 'address', 'postal_code', 'city']
+        fields = ['first_name', 'last_name', 'email', 'phone_number', 'address', 'postal_code', 'city']

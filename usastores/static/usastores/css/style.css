@@ -18,9 +18,15 @@ body .container {
     margin-bottom: 20px;
 }
 
+/* Статус корзины */
 .cart-status {
 	margin-right: 15px;
 }
+
+.text-cart-status {
+	text-decoration: none;
+}
+
 
 .login a {
 	text-decoration: none;

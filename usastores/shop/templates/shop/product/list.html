@@ -44,10 +44,8 @@
                 <div
                     class="product-bottom-details d-flex justify-content-between"
                 >
-                    <div class="product-price">{{ product.price }}</div>
-                    <div class="product-links">
-                    <a href="#"><i class="bi bi-cart-fill"></i></a>
-                    </div>
+                    <div class="product-price">{{ product.price|floatformat:"g" }} ₽</div>
+
                 </div>
                 </div>
             </div>

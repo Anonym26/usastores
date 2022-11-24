@@ -1,12 +1,14 @@
-# Стандартный импорт библиотеки шаблонов
 from django import template
 
-# Это чтобы register.filter работал
+
 register = template.Library()
 
-# Расскажем django о нашем крутом фильтре
+
 @register.filter
 def rupluralize(value, arg="дурак,дурака,дураков"):
+    """
+    Определяет склонение слова исходя из количества.
+    """
     args = arg.split(",")
     number = abs(int(value))
     a = number % 10
